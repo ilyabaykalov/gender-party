@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f3ed">
+  <title>Колесо сюрприза</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <div class="sparkle sparkle-one" aria-hidden="true">✳</div>
+    <div class="sparkle sparkle-two" aria-hidden="true">✦</div>
+    <div class="sparkle sparkle-three" aria-hidden="true">✧</div>
+
+    <header class="intro">
+      <p class="eyebrow"><span></span> МОМЕНТ ВОЛШЕБСТВА <span></span></p>
+      <h1>Колесо <em>сюрприза</em></h1>
+      <p class="subtitle">Один поворот — и всё станет ясно</p>
+    </header>
+
+    <section class="game" aria-label="Колесо сюрприза">
+      <div class="wheel-wrap">
+        <div class="pointer" aria-hidden="true"></div>
+        <div class="wheel-rim">
+          <div class="wheel" id="wheel" aria-hidden="true">
+            <div class="wheel-inner"></div>
+            <div class="wheel-center"><span>✦</span></div>
+          </div>
+        </div>
+      </div>
+      <button id="spin" type="button"><span>Узнать кто в животике</span><span aria-hidden="true">↗</span></button>
+      <p class="status" id="status" role="status" aria-live="polite">Загадайте желание и нажмите на кнопку</p>
+    </section>
+
+    <footer><span>✦</span> ПУСТЬ ЭТОТ МОМЕНТ БУДЕТ ОСОБЕННЫМ <span>✦</span></footer>
+  </main>
+  <dialog class="result-dialog" id="result" aria-labelledby="result-title" aria-describedby="result-description">
+    <div class="result-content">
+      <span class="result-sparkle result-sparkle-left" aria-hidden="true">✦</span>
+      <span class="result-sparkle result-sparkle-right" aria-hidden="true">✧</span>
+      <p class="result-eyebrow">САМЫЙ ВОЛШЕБНЫЙ МОМЕНТ</p>
+      <div class="result-icon" aria-hidden="true">✦</div>
+      <h2 id="result-title">Ого! Будет <em>мальчик!</em></h2>
+      <p id="result-description">Маленькое счастье уже в пути 💙</p>
+      <form method="dialog"><button class="result-close" type="submit">Какое счастье!</button></form>
+    </div>
+  </dialog>
+</body>
+</html>

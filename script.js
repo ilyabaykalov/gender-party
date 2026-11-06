@@ -12,10 +12,10 @@ const messages = [
   'Волшебство начинается ✨'
 ];
 
-// The blue sector immediately clockwise from the top spans 11.25°–22.5°.
-// Rotating its midpoint to the fixed pointer requires 343.125° clockwise.
-const blueStop = 343.125;
-const duration = 150_000;
+// The boundary at 11.25° lies between the first pink and blue sectors.
+const boundaryStop = 348.75;
+const blueOffset = -5.625;
+const duration = 60_000;
 let rotation = 0;
 
 button.addEventListener('click', () => {
@@ -29,11 +29,15 @@ button.addEventListener('click', () => {
 
   const start = rotation;
   const normalized = ((start % 360) + 360) % 360;
-  const correction = (blueStop - normalized + 360) % 360;
-  const finish = start + 40 * 360 + correction;
+  const correction = (boundaryStop - normalized + 360) % 360;
+  const boundary = start + 30 * 360 + correction;
+  const finish = boundary + blueOffset;
   const animation = wheel.animate([
     { transform: `rotate(${start}deg)`, offset: 0, easing: 'linear' },
-    { transform: `rotate(${finish - 5 * 360}deg)`, offset: 0.75, easing: 'cubic-bezier(.16, 0, .25, 1)' },
+    { transform: `rotate(${start + 10 * 360}deg)`, offset: 10 / 60, easing: 'cubic-bezier(.33, .72, .67, .991)' },
+    { transform: `rotate(${boundary - 22.5}deg)`, offset: 53.7 / 60, easing: 'linear' },
+    { transform: `rotate(${boundary}deg)`, offset: 58.7 / 60, easing: 'linear' },
+    { transform: `rotate(${boundary}deg)`, offset: 59.7 / 60, easing: 'ease-out' },
     { transform: `rotate(${finish}deg)`, offset: 1 }
   ], { duration, fill: 'forwards' });
 
